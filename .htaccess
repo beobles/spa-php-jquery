@@ -1,0 +1,14 @@
+DirectoryIndex index.php
+
+# Ativo o apache para o .htaccess
+RewriteEngine on
+
+# Entrega o arquivo ou diretório caso exista
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Diferencia a requisação caso terminar com algum tipo de extensão de arquivo
+RewriteCond %{REQUEST_URI} !\.([^/]+)$
+ 
+# Envia todas as requisições para index.php
+RewriteRule ^(.*)$ index.php?path=$1
